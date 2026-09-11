@@ -1,0 +1,147 @@
+/* CSS 변수 (다크 모드 및 공통 스타일에 활용) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --card-bg: #f9f9f9;
+  --neon-green : #47ff7b;
+  --neon-pink: #ff4cb5;
+  --neon-cyan: #35eaff;
+  --neon-yellow: #ffe84a;
+  --neon-orange: #ff9b3d;
+
+}
+
+
+
+* {
+  box-sizing : border-box;  
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+}
+
+#quiz-section::before {
+  content : "";
+  position : absolute;
+  inset : 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(53,234,255,.65) 1px, transparent 1.5px);
+  background-size: 83px 83px, 127px 127px;
+  background-position: 0 0, 30px 40px;
+  opacity: .28;
+  pointer-events : none; 
+  /* ^^^ 배경 때문에 onclick이 막히는 걸 방지 */
+
+}
+
+
+
+
+
+/* 표지 아래 헤더 부분 */
+
+.select-game {font-size:50px; text-align:center; color : var(--neon-green); font-family : "Press Start 2P", monospace;}
+
+.game-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+
+@media (max-width: 768px) {
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.Moviequiz-card {
+  --accent: var(--neon-green);
+  min-height : 350px;
+  display : flex;
+  flex-direction : column;
+  padding : 20px 16px;
+  border : 3px solid var(--accent);
+  border-radius : 15px;
+  box-shadow : 0 0 0 rgba(0,0,0,0);
+}
+
+.Moviequiz-card:hover {
+  transform : translateY(-10px);
+}
+
+.icon {
+  font-size : 60px; 
+  text-align : center; 
+  padding : 15px;
+}
+.Moviequiz-card h3 { margin: 0 0 13px; text-align: center; color: #47ff7b; font-size: 22px; }
+.Moviequiz-card p { margin: 0 0 13px; text-align: center;  font-size: 14px; }
+.difficulty {font-size : 12px; text-align : center;}
+.play-button {font-size : 17px; padding : 5px; border : 4px solid #47ff7b; background-color : #07120a; color : #47ff7b; font-family : "Press Start 2P", monospace;}
+
+.Footballquiz-card {
+  --accent: var(--neon-pink);
+  min-height : 350px;
+  display : flex;
+  flex-direction : column;
+  padding : 20px 16px;
+  border : 3px solid var(--accent);
+  border-radius : 15px;
+  box-shadow : 0 0 0 rgba(0,0,0,0);
+}
+
+.Footballquiz-card:hover {
+  transform : translateY(-10px);
+}
+
+.Footballquiz-card h3 { margin: 0 0 13px; text-align: center; color: #ff4cb5; font-size: 22px; }
+.Footballquiz-card p { margin: 0 0 13px; text-align: center;  font-size: 14px; }
+.difficulty {font-size : 12px; text-align : center;}
+
+.Mathquiz-card {
+  --accent: var(--neon-cyan);
+  min-height : 350px;
+  display : flex;
+  flex-direction : column;
+  padding : 20px 16px;
+  border : 3px solid var(--accent);
+  border-radius : 15px;
+  box-shadow : 0 0 0 rgba(0,0,0,0);
+}
+
+.Mathquiz-card:hover {
+  transform : translateY(-10px);
+}
+
+.Mathquiz-card h3 { margin: 0 0 13px; text-align: center; color:  #35eaff; font-size: 22px; }
+.Mathquiz-card p { margin: 0 0 13px; text-align: center;  font-size: 14px; }
+.difficulty {font-size : 12px; text-align : center;}
+
+.Historyquiz-card {
+  --accent: var(--neon-orange);
+  min-height : 350px;
+  display : flex;
+  flex-direction : column;
+  padding : 20px 16px;
+  border : 3px solid var(--accent);
+  border-radius : 15px;
+  box-shadow : 0 0 0 rgba(0,0,0,0);
+}
+
+.Historyquiz-card:hover {
+  transform : translateY(-10px);
+}
+
+.Historyquiz-card h3 { margin: 0 0 13px; text-align: center; color: #ffe84a;font-size: 22px; }
+.Historyquiz-card p { margin: 0 0 13px; text-align: center;  font-size: 14px; }
+.difficulty {font-size : 12px; text-align : center;}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+      --bg-color: #121212;
+      --text-color: #f1f1f1;
+      --card-bg: #1e1e1e;
+  }
+}
+
