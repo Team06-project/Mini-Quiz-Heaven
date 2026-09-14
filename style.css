@@ -190,6 +190,47 @@ body {
   margin: 0;
 }
 
+body {
+  background-color : #050505;
+  color : white;
+  overflow-x: hidden;
+
+}
+
+body::before {
+  content : "";
+  position : fixed;
+  top : 0;
+  left : 0;
+
+  width : 100%;
+  height : 200%;
+  
+  background-image : 
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(#47ff7b 1px, transparent 1px);
+
+  background-size : 50px 50px, 80px 80px;
+
+  animation : starMove 15s linear infinite;
+
+  opacity : 0.35;
+
+  pointer-events : none;
+
+  z-index : -1;
+}
+
+@keyframes starMove {
+  from {
+    transform : translateY(-50%);
+
+  }
+
+  to {
+    transform : translateY(0);
+  }
+}
 
 footer {
   padding : 20px 18px;
