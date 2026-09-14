@@ -1,67 +1,150 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>축구선수 퀴즈</title>
-    <!-- Google 8비트 폰트 (Press Start 2P) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./football-quiz.css" />
-  </head>
-  <body>
-    <div class="quiz-container">
-      <h1 class="quiz-title">⚽ FOOTBALL QUIZ</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>⚽ FOOTBALL QUIZ</title>
 
-      <!-- 메인 화면 영역 -->
-      <div id="mainBox">
-        <div class="game-card">
-          <div class="card-icon">⚽</div>
-          <h3 class="card-title">FOOTBALL QUIZ</h3>
-          <p class="card-desc">GUESS THE FOOTBALL PLAYER!</p>
+  <!-- 8비트 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./football-quiz.css">
+</head>
+<body>
+
+  <div class="quiz-container">
+
+    <!-- 제목 -->
+    <h1 class="quiz-title">⚽ FOOTBALL QUIZ</h1>
+
+    <!-- =====================================
+         시작 화면
+    ====================================== -->
+    <div id="mainBox">
+      <div class="game-card">
+        <!-- 상단 우측 메인 페이지 이동 버튼 -->
+        <div style="text-align: right; margin-bottom: 8px;">
+          <button type="button" class="top-home-btn" id="startHomeBtn">MAIN</button>
+        </div>
+        
+        <div class="card-icon">⚽</div>
+        <h2 class="card-title">FOOTBALL QUIZ</h2>
+        <p class="card-desc">GUESS THE FOOTBALL PLAYER!</p>
+
+        <div class="card-info">
           <span class="card-author">BY. 김대희</span>
-          <div class="card-difficulty">DIFFICULTY ★★★★★</div>
-          <span class="card-time">TIME: 3MIN</span>
-          <button type="button" class="play-btn" id="startBtn">▶ PLAY</button>
-        </div>
-      </div>
-
-      <!-- 게임 진행 영역 -->
-      <div id="gameBox" class="hidden">
-        <div class="quiz-status">
-          <span id="timer">TIME: 03:00</span>
-          <span id="questionCount">STAGE: 1 / 10</span>
+          <div class="card-difficulty">DIFFICULTY ★★★★☆</div>
+          <span class="card-time">TIME LIMIT: 3 MIN</span>
         </div>
 
-        <div class="image-box">
-          <img id="playerImage" src="" alt="축구선수 이미지" />
+        <div class="card-instructions">
+          <p>
+            전설적인 축구선수 10명의 사진을 보고<br>
+            제한시간 내에 이름을 입력해 맞혀보세요!
+          </p>
         </div>
 
-        <div class="input-box">
-          <input
-            type="text"
-            id="answerInput"
-            placeholder="선수 이름을 입력하세요"
-            autocomplete="off"
-          />
-          <button type="button" id="submitBtn">제출</button>
+        <!-- 국기 리스트 세션 -->
+        <div class="flag-section">
+          <div class="flag-title">FEATURED COUNTRIES</div>
+          <div class="flag-grid">
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/pt.png" alt="POR"> <span>POR</span></span>
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/ar.png" alt="ARG"> <span>ARG</span></span>
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/kr.png" alt="KOR"> <span>KOR</span></span>
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/jp.png" alt="JPN"> <span>JPN</span></span>
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/fr.png" alt="FRA"> <span>FRA</span></span>
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/it.png" alt="ITA"> <span>ITA</span></span>
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/br.png" alt="BRA"> <span>BRA</span></span>
+            <span class="flag-item"><img src="https://flagcdn.com/24x18/nl.png" alt="NED"> <span>NED</span></span>
+          </div>
         </div>
-      </div>
 
-      <!-- 게임 결과 영역 -->
-      <div id="quizResults" class="hidden">
-        <h2>GAME OVER</h2>
-        <p class="final-score">FINAL SCORE: <span id="scoreText">0</span> / 10</p>
-        <p id="gradeTitle" class="grade-title"></p>
-        <p id="gradeDesc" class="grade-desc"></p>
-        <button type="button" id="restartBtn" class="play-btn">RETRY</button>
+        <button type="button" class="play-btn start-play-btn" id="startBtn">
+          ▶ START GAME
+        </button>
       </div>
     </div>
 
-    <script src="./football-quiz.js"></script>
-  </body>
+    <!-- =====================================
+         게임 화면
+    ====================================== -->
+    <div id="gameBox" class="hidden">
+      <div class="quiz-status">
+        <span id="timer">TIME: 03:00</span>
+        <span id="questionCount">STAGE: 1 / 10</span>
+        <!-- 홈으로 돌아가는 버튼 -->
+        <button type="button" id="homeBtn" class="top-home-btn">HOME</button>
+      </div>
+
+      <!-- 선수 사진 -->
+      <div class="image-box">
+        <img id="playerImage" src="" alt="축구선수 이미지">
+      </div>
+
+      <!-- 정답 입력 -->
+      <div class="input-box">
+        <input type="text" id="answerInput" placeholder="선수 이름을 입력하세요" autocomplete="off">
+        <button type="button" id="submitBtn">제출</button>
+      </div>
+    </div>
+
+    <!-- =====================================
+         일반 결과 화면 (0 ~ 6점)
+    ====================================== -->
+    <div id="quizResults" class="hidden">
+      <h2>GAME OVER</h2>
+      <p class="final-score">FINAL SCORE: <span id="scoreText">0</span> / 10</p>
+      <p id="gradeTitle" class="grade-title"></p>
+      <p id="gradeDesc" class="grade-desc"></p>
+
+      <div class="btn-group">
+        <button type="button" id="restartBtn" class="play-btn">RETRY</button>
+        <button type="button" id="resultHomeBtn" class="play-btn home-style-btn">MAIN</button>
+      </div>
+    </div>
+
+    <!-- =====================================
+         7~9점 화면 (은색 트로피)
+    ====================================== -->
+    <div id="silverScreen" class="hidden">
+      <div class="firework firework1">✦</div>
+      <div class="firework firework2">✹</div>
+
+      <div class="silver-title">GREAT JOB!</div>
+      <div class="silver-trophy">🥈</div>
+      <div class="silver-score" id="silverScoreText">7 / 10</div>
+      <div class="silver-message">PRO CLASS!</div>
+
+      <div class="btn-group">
+        <button type="button" id="silverRestartBtn" class="play-btn silver-btn">RETRY</button>
+        <button type="button" id="silverHomeBtn" class="play-btn silver-btn">MAIN</button>
+      </div>
+    </div>
+
+    <!-- =====================================
+         PERFECT 10/10 화면 (금색 트로피)
+    ====================================== -->
+    <div id="perfectScreen" class="hidden">
+      <div class="firework firework1">✦</div>
+      <div class="firework firework2">✹</div>
+      <div class="firework firework3">✦</div>
+      <div class="firework firework4">✹</div>
+      <div class="firework firework5">✦</div>
+
+      <div class="perfect-title">★ PERFECT ★</div>
+      <div class="trophy">🏆</div>
+      <div class="perfect-score">10 / 10</div>
+      <div class="perfect-message">WORLD CLASS!</div>
+
+      <div class="btn-group">
+        <button type="button" id="perfectRestartBtn" class="play-btn perfect-btn">PLAY AGAIN</button>
+        <button type="button" id="perfectHomeBtn" class="play-btn perfect-btn">MAIN</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./football-quiz.js"></script>
+</body>
 </html>
