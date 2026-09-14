@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>축구선수 퀴즈</title>
+    <!-- Google 8비트 폰트 (Press Start 2P) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./football-quiz.css" />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1 class="quiz-title">⚽ FOOTBALL QUIZ</h1>
+
+      <!-- 메인 화면 영역 -->
+      <div id="mainBox">
+        <div class="game-card">
+          <div class="card-icon">⚽</div>
+          <h3 class="card-title">FOOTBALL QUIZ</h3>
+          <p class="card-desc">GUESS THE FOOTBALL PLAYER!</p>
+          <span class="card-author">BY. 김대희</span>
+          <div class="card-difficulty">DIFFICULTY ★★★★★</div>
+          <span class="card-time">TIME: 3MIN</span>
+          <button type="button" class="play-btn" id="startBtn">▶ PLAY</button>
+        </div>
+      </div>
+
+      <!-- 게임 진행 영역 -->
+      <div id="gameBox" class="hidden">
+        <div class="quiz-status">
+          <span id="timer">TIME: 03:00</span>
+          <span id="questionCount">STAGE: 1 / 10</span>
+        </div>
+
+        <div class="image-box">
+          <img id="playerImage" src="" alt="축구선수 이미지" />
+        </div>
+
+        <div class="input-box">
+          <input
+            type="text"
+            id="answerInput"
+            placeholder="선수 이름을 입력하세요"
+            autocomplete="off"
+          />
+          <button type="button" id="submitBtn">제출</button>
+        </div>
+      </div>
+
+      <!-- 게임 결과 영역 -->
+      <div id="quizResults" class="hidden">
+        <h2>GAME OVER</h2>
+        <p class="final-score">FINAL SCORE: <span id="scoreText">0</span> / 10</p>
+        <p id="gradeTitle" class="grade-title"></p>
+        <p id="gradeDesc" class="grade-desc"></p>
+        <button type="button" id="restartBtn" class="play-btn">RETRY</button>
+      </div>
+    </div>
+
+    <script src="./football-quiz.js"></script>
+  </body>
+</html>
