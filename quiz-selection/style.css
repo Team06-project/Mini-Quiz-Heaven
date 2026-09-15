@@ -81,7 +81,28 @@ body::before {
   }
 }
 
+.back-button {
+  padding: 12px 20px;
 
+  background-color: black;
+  color: #47ff7b;
+
+  border: 2px solid #47ff7b;
+
+  font-family: "Press Start 2P", monospace;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.back-button:hover {
+  box-shadow:
+    0 0 10px #47ff7b,
+    0 0 20px #47ff7b;
+
+  transform: translateX(-5px);
+}
 
 
 /* 표지 아래 헤더 부분 */
