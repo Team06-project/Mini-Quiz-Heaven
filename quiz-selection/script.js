@@ -1,6 +1,6 @@
 const playButtons = document.querySelectorAll(".play-button");
 
-const audioContext = new AudioContext();
+const audioContext = new AudioContext()
 
 function playTone(frequency, startTime, duration) {
   const oscillator = audioContext.createOscillator();
@@ -46,3 +46,36 @@ playButtons.forEach(function (button) {
   });
 
 });
+
+// 퀴즈 검색 기능
+
+const searchInput = document.querySelector("#quiz-search");
+const quizCards = document.querySelectorAll(".quiz-card");
+const noResult = document.querySelector("#no-result")
+
+
+searchInput.addEventListener("input", function () {
+
+  const keyword = searchInput.value
+    .trim()
+    .toLowerCase();
+
+  let matchCount = 0;
+
+  quizCards.forEach(function (card) {
+
+    const cardText = card.textContent
+      .toLowerCase();
+
+
+    card.style.display =
+      cardText.includes(keyword) ? "" : "none";
+
+  });
+
+  noResult.style.display =
+    matchCount == 0 ? "block" : "none";
+
+
+});
+

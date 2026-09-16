@@ -81,6 +81,57 @@ body::before {
   }
 }
 
+/* 검색 기능 */
+
+.search-box {
+  display: flex;
+  justify-content: right;
+
+  margin: 30px 0;
+}
+
+#quiz-search {
+  width: 200px;
+
+  margin : 0px 30px 0px 0px;
+  padding: 15px 10px;
+  
+
+  background-color: black;
+  color: #47ff7b;
+
+  border: 2px solid #47ff7b;
+
+  font-family: "Press Start 2P", monospace;
+
+  outline: none;
+}
+
+#quiz-search::placeholder {
+  color: #47ff7b;
+  opacity: 0.5;
+}
+
+#quiz-search:focus {
+  box-shadow:
+    0 0 10px #47ff7b,
+    0 0 20px #47ff7b;
+}
+
+#no-result {
+  display : none;
+
+  text-align : center;
+  margin : 50px 0;
+
+  color : #47ff7b;
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 18px;
+}
+
+
+/* 뒤로 가기 버튼 */
 .back-button {
   padding: 12px 20px;
 

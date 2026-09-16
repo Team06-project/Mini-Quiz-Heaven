@@ -10,17 +10,24 @@
 </head>
 <body>
 
+<!-- 퀴즈 검색 버튼 -->
+
+<div class = "search-box">
+  <input type="text" id="quiz-search" placeholder ="SEARCH QUIZ...">
+</div>
+
+
             <!-- 퀴즈 고르는 섹션 -->
 
 
-</section>
-<section id = "quiz-section">
+
+<section id = "quiz-section"> 
 
   <h2 class = "select-game">SELECT GAME</h2>
 
 
  <div class = "game-grid">
-  <article class="Moviequiz-card">
+  <article class="Moviequiz-card quiz-card">
    <div class = icon>🎬</div>
    <h3> 영화 퀴즈 </h3>
    <p> 영화 배우 사진을 보고 배우를 맞춰라 !</p>
@@ -33,7 +40,7 @@
  </article>
 
 
- <article class="Footballquiz-card">
+ <article class="Footballquiz-card quiz-card">
   <div class = icon>⚽</div>
   <h3> 축구 퀴즈 </h3>
   <p> 축구 선수 사진을 보고 이름을 맞춰라 !</p>
@@ -43,7 +50,7 @@
 
 
  </article>
- <article class="Mathquiz-card">
+ <article class="Mathquiz-card quiz-card">
   <div class = icon>📐</div>
   <h3> 수학 퀴즈 </h3>
   <p> 제한 시간 내에 연산을 빠르게 풀어내라 !</p>
@@ -53,7 +60,7 @@
 
 
  </article>
- <article class="Historyquiz-card">
+ <article class="Historyquiz-card quiz-card">
   <div class = icon>📖</div>
   <h3> 역사 퀴즈 </h3>
   <p> 영화 배우 사진을 보고 배우를 맞춰라 !</p>
@@ -64,7 +71,7 @@
 
  </article>
 
- <article class="Moviequiz-card">
+ <article class="Moviequiz-card quiz-card">
   <div class = icon>✝</div>
   <h3> T/F 테스트 </h3>
   <p> 당신이 T인지💔 F인지❤ 아는 방법 !</p>
@@ -75,6 +82,11 @@
 
  </article>
 
+</div>
+<!-- 검색 결과가 없을 때 -->
+<div id="no-result">
+  <p>👾 NO QUIZ FOUND 👾</p>
+  <span>TRY ANOTHER KEYWORD</span>
 </div>
 
 </section>
@@ -87,7 +99,7 @@
           
     <footer>
     </footer>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
     <script src="button-mechanism.js"></script>
 </body>
 </html>
