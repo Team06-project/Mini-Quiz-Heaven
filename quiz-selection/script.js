@@ -68,8 +68,12 @@ searchInput.addEventListener("input", function () {
       .toLowerCase();
 
 
-    card.style.display =
-      cardText.includes(keyword) ? "" : "none";
+      if (cardText.includes(keyword)) {
+        card.style.display = "";
+        matchCount++;
+      } else {
+        card.style.display = "none";
+      }
 
   });
 
