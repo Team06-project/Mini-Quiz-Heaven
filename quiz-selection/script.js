@@ -83,3 +83,48 @@ searchInput.addEventListener("input", function () {
 
 });
 
+// 유저 넣기 
+
+
+
+const nicknameInput =
+  document.querySelector("#nickname");
+
+const playerName =
+  document.querySelector("#player-name");
+
+
+// 기존 로그인 유저 확인
+const currentUser = getCurrentUser();
+
+if (currentUser !== null) {
+
+  playerName.textContent =
+    "PLAYER : " + currentUser.nickname;
+
+}
+
+
+// Enter 키 로그인
+nicknameInput.addEventListener("keydown", function (event) {
+
+  if (event.key !== "Enter") {
+    return;
+  }
+
+  const nickname =
+    nicknameInput.value.trim();
+
+  if (nickname === "") {
+    return;
+  }
+
+  const user =
+    loginUser(nickname);
+
+  playerName.textContent =
+    "PLAYER : " + user.nickname;
+
+  nicknameInput.value = "";
+
+});
