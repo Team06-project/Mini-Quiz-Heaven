@@ -155,6 +155,19 @@ body::before {
   transform: translateX(-5px);
 }
 
+.player-register {
+  padding: 12px 20px;
+
+  color: #47ff7b;
+
+  /* border: 2px solid #47ff7b; */
+
+  font-family: "Press Start 2P", monospace;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
 
 /* 표지 아래 헤더 부분 */
 
@@ -177,6 +190,8 @@ body::before {
   border : 3px solid var(--accent);
   border-radius : 15px;
   box-shadow : 0 0 0 rgba(0,0,0,0);
+  font-family: "Press Start 2P", monospace;
+  color : white;
 }
 
 .Moviequiz-card:hover {
@@ -202,6 +217,8 @@ body::before {
   border : 3px solid var(--accent);
   border-radius : 15px;
   box-shadow : 0 0 0 rgba(0,0,0,0);
+  font-family: "Press Start 2P", monospace;
+  color : white;
 }
 
 .Footballquiz-card:hover {
@@ -221,6 +238,9 @@ body::before {
   border : 3px solid var(--accent);
   border-radius : 15px;
   box-shadow : 0 0 0 rgba(0,0,0,0);
+  font-family: "Press Start 2P", monospace;
+  color : white;
+
 }
 
 .Mathquiz-card:hover {
@@ -240,6 +260,9 @@ body::before {
   border : 3px solid var(--accent);
   border-radius : 15px;
   box-shadow : 0 0 0 rgba(0,0,0,0);
+  font-family: "Press Start 2P", monospace;
+  color : white;
+
 }
 
 .Historyquiz-card:hover {
