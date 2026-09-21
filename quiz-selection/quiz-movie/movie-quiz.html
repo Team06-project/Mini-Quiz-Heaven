@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>⚽ FOOTBALL QUIZ</title>
+  <title>🎬 MOVIE QUIZ</title>
 
   <!-- 8비트 폰트 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./football-quiz.css">
+  <link rel="stylesheet" href="./movie-quiz.css">
 </head>
 <body>
 
   <div class="quiz-container">
 
     <!-- 제목 -->
-    <h1 class="quiz-title">⚽ FOOTBALL QUIZ</h1>
+    <h1 class="quiz-title">🎬 MOVIE QUIZ</h1>
 
     <!-- =====================================
          시작 화면
@@ -28,25 +28,25 @@
           <button type="button" class="top-home-btn" id="startHomeBtn">MAIN</button>
         </div>
         
-        <div class="card-icon">⚽</div>
-        <h2 class="card-title">FOOTBALL QUIZ</h2>
-        <p class="card-desc">GUESS THE FOOTBALL PLAYER!</p>
+        <div class="card-icon">🎬</div>
+        <h2 class="card-title">MOVIE QUIZ</h2>
+        <p class="card-desc">GUESS THE MOVIE TITLE !</p>
 
         <div class="card-info">
-          <span class="card-author">BY. 김대희</span>
+          <span class="card-author">BY. 최재혁</span>
           <div class="card-difficulty">DIFFICULTY ★★★★☆</div>
           <span class="card-time">TIME LIMIT: 3 MIN</span>
         </div>
 
         <div class="card-instructions">
           <p>
-            전설적인 축구선수 10명의 사진을 보고<br>
-            제한시간 내에 이름을 입력해 맞혀보세요!
+            유명한 영화 장면 10장의 사진을 보고<br>
+            제한시간 내에 영화 이름을 입력해 맞혀보세요!
           </p>
         </div>
 
         <!-- 국기 리스트 세션 -->
-        <div class="flag-section">
+        <!-- <div class="flag-section">
           <div class="flag-title">FEATURED COUNTRIES</div>
           <div class="flag-grid">
             <span class="flag-item"><img src="https://flagcdn.com/24x18/pt.png" alt="POR"> <span>POR</span></span>
@@ -58,7 +58,7 @@
             <span class="flag-item"><img src="https://flagcdn.com/24x18/br.png" alt="BRA"> <span>BRA</span></span>
             <span class="flag-item"><img src="https://flagcdn.com/24x18/nl.png" alt="NED"> <span>NED</span></span>
           </div>
-        </div>
+        </div> -->
 
         <button type="button" class="play-btn start-play-btn" id="startBtn">
           ▶ START GAME
@@ -84,7 +84,7 @@
 
       <!-- 정답 입력 -->
       <div class="input-box">
-        <input type="text" id="answerInput" placeholder="선수 이름을 입력하세요" autocomplete="off">
+        <input type="text" id="answerInput" placeholder="영화 제목을 입력하세요" autocomplete="off">
         <button type="button" id="submitBtn">제출</button>
       </div>
     </div>
@@ -114,7 +114,7 @@
       <div class="silver-title">GREAT JOB!</div>
       <div class="silver-trophy">🥈</div>
       <div class="silver-score" id="silverScoreText">7 / 10</div>
-      <div class="silver-message">PRO CLASS!</div>
+      <div class="silver-message">극장 좀 다녀보셨군요 !</div>
 
       <div class="btn-group">
         <button type="button" id="silverRestartBtn" class="play-btn silver-btn">RETRY</button>
@@ -135,7 +135,7 @@
       <div class="perfect-title">★ PERFECT ★</div>
       <div class="trophy">🏆</div>
       <div class="perfect-score">10 / 10</div>
-      <div class="perfect-message">WORLD CLASS!</div>
+      <div class="perfect-message">당신은 진정한 영화광 !</div>
 
       <div class="btn-group">
         <button type="button" id="perfectRestartBtn" class="play-btn perfect-btn">PLAY AGAIN</button>
@@ -145,6 +145,6 @@
 
   </div>
   <script src="../user-storage/user-storage.js"></script>
-  <script src="./football-quiz.js"></script>
+  <script src="./movie-quiz.js"></script>
 </body>
 </html>

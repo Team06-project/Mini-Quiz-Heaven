@@ -1,14 +1,14 @@
 const quizData = [
-  { name: "호날두", src: "./img/호날두.png" },
-  { name: "메시", src: "./img/메시.png" },
-  { name: "손흥민", src: "./img/손흥민.png" },
-  { name: "나카타", src: "./img/나카타.png" },
-  { name: "지단", src: "./img/지단.png" },
-  { name: "피를로", src: "./img/피를로.png" },
-  { name: "호나우지뉴", src: "./img/호나우지뉴.png" },
-  { name: "박항서", src: "./img/박항서.png" },
-  { name: "히딩크", src: "./img/히딩크.png" },
-  { name: "박지성", src: "./img/박지성.png" }
+  { name: "올드보이", src: "./img/올드보이.png" },
+  { name: "타짜", src: "./img/타짜.png" },
+  { name: "베테랑", src: "./img/베테랑.png" },
+  { name: "부산행", src: "./img/부산행.png" },
+  { name: "아저씨", src: "./img/아저씨.png" },
+  { name: "살인의 추억", src: "./img/살인의 추억.png" },
+  { name: "범죄도시", src: "./img/범죄도시.png" },
+  { name: "도둑들", src: "./img/도둑들.png" },
+  { name: "괴물", src: "./img/괴물.png" },
+  { name: "기생충", src: "./img/기생충.png" }
 ];
 
 let currentIndex = 0;
@@ -145,7 +145,7 @@ function playPerfectSound() {
 function speakGoal() {
   if (!("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance("골");
+  const utterance = new SpeechSynthesisUtterance("");
   utterance.lang = "ko-KR";
   utterance.rate = 0.45;
   utterance.pitch = 1.35;
@@ -156,7 +156,7 @@ function speakGoal() {
 function speakNoGoal() {
   if (!("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance("노골");
+  const utterance = new SpeechSynthesisUtterance("");
   utterance.lang = "ko-KR";
   utterance.rate = 0.4;
   utterance.pitch = 0.65;
@@ -286,7 +286,7 @@ function endGame() {
   }
 
   saveQuizResult("football", score);
-
+  
   gameBox.classList.add("hidden");
 
   // 10점 만점: 금색 트로피
