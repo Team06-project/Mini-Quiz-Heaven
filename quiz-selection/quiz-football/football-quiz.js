@@ -285,6 +285,8 @@ function endGame() {
     window.speechSynthesis.cancel();
   }
 
+  saveQuizResult("football", score);
+
   gameBox.classList.add("hidden");
 
   // 10점 만점: 금색 트로피
