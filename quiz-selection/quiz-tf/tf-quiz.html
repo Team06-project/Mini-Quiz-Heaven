@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T vs F 선택 스타일 퀴즈 | Retro Arcade</title>
+  <!-- Google Fonts: Press Start 2P & Pretendard / Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./tf-quiz.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            arcade: {
+              bg: '#07070b',
+              panel: '#0e0e16',
+              green: '#00ff66',
+              greenGlow: 'rgba(0, 255, 102, 0.4)',
+              pink: '#ff007f',
+              cyan: '#00f0ff',
+              amber: '#ffb800',
+              purple: '#bd00ff',
+              dimText: '#8f95a5'
+            }
+          },
+          fontFamily: {
+            pixel: ['"Press Start 2P"', 'monospace'],
+            sans: ['"Noto Sans KR"', 'sans-serif']
+          },
+          boxShadow: {
+            'neon-green': '0 0 10px #00ff66, inset 0 0 5px #00ff66',
+            'neon-green-lg': '0 0 20px rgba(0, 255, 102, 0.6), inset 0 0 10px rgba(0, 255, 102, 0.3)',
+            'neon-pink': '0 0 12px #ff007f, inset 0 0 6px #ff007f',
+            'neon-cyan': '0 0 12px #00f0ff, inset 0 0 6px #00f0ff',
+            'neon-amber': '0 0 12px #ffb800, inset 0 0 6px #ffb800',
+            'pixel-box': '4px 4px 0px #000000',
+            'pixel-press': '2px 2px 0px #000000'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="crt-overlay flex flex-col justify-between items-center p-4 md:p-8 min-h-screen selection:bg-arcade-green selection:text-black">
+
+  <audio id="choice-sound" preload="auto" src="audio/correct-bell.wav"></audio>
+  <audio id="result-sound" preload="auto" src="audio/champion.wav"></audio>
+
+  <!-- Top Arcade Header -->
+  <header class="w-full max-w-4xl mx-auto flex items-center justify-between py-3 px-4 md:px-6 bg-arcade-panel/90 border-2 border-[#1c1c2b] rounded-lg mb-6 shadow-2xl backdrop-blur">
+    <div class="flex items-center gap-3">
+      <div class="w-3 h-3 bg-arcade-green rounded-none shadow-[0_0_8px_#00ff66] animate-pulse"></div>
+      <a href="../../quiz-selection/index.html" class="font-pixel text-xs md:text-sm text-arcade-green hover:underline tracking-wider flex items-center gap-2">
+        <span>◀ MINI QUIZ HEAVEN</span>
+      </a>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="retro-badge bg-[#191924] text-arcade-cyan border border-arcade-cyan/40">ROOM #04</span>
+      <span class="hidden sm:inline font-pixel text-[10px] text-arcade-dimText">ARCADE V2.0</span>
+    </div>
+  </header>
+
+  <!-- Main Cabinet Frame Container -->
+  <main class="w-full max-w-4xl mx-auto flex-1 flex flex-col justify-center items-center relative z-10">
+
+    <!-- ============================================== -->
+    <!-- VIEW 1: START SCREEN (시작 화면) -->
+    <!-- ============================================== -->
+    <section id="view-start" class="w-full flex flex-col items-center text-center">
+      <!-- Arcade Header Graphic -->
+      <div class="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded bg-[#13131f] border border-arcade-green/40 shadow-[0_0_12px_rgba(0,255,102,0.2)]">
+        <span class="w-2 h-2 bg-arcade-pink inline-block animate-ping"></span>
+        <span class="font-pixel text-[11px] md:text-xs text-arcade-pink tracking-widest">PERSONAL STYLE RETRO TEST</span>
+      </div>
+
+      <h1 class="font-pixel text-2xl sm:text-4xl md:text-5xl text-arcade-green neon-pulse-glow tracking-tight leading-snug md:leading-normal mb-6">
+        T vs F CHOICE QUIZ
+      </h1>
+
+      <!-- Cabinet Card -->
+      <div class="w-full max-w-2xl bg-arcade-panel/95 pixel-border-green rounded-xl p-6 md:p-10 shadow-2xl text-left relative overflow-hidden">
+        <!-- Corner Pixel Accents -->
+        <div class="absolute top-2 left-2 w-2 h-2 bg-arcade-green"></div>
+        <div class="absolute top-2 right-2 w-2 h-2 bg-arcade-green"></div>
+        <div class="absolute bottom-2 left-2 w-2 h-2 bg-arcade-green"></div>
+        <div class="absolute bottom-2 right-2 w-2 h-2 bg-arcade-green"></div>
+
+        <!-- Description Paragraphs -->
+        <div class="space-y-4 text-gray-200 text-sm md:text-base leading-relaxed">
+          <p class="font-bold text-arcade-cyan text-base md:text-lg flex items-center gap-2">
+            <span>👾</span> 같은 상황, 다른 첫 기준!
+          </p>
+          <p class="text-gray-300">
+            친구의 고민을 듣거나 함께 결정을 내려야 할 때, 나는 무엇을 먼저 살필까요?
+            8가지 상황을 읽고 <strong class="text-arcade-cyan">평소 내게 더 자연스러운 선택</strong>을 골라보세요.
+            둘 다 중요해 보여도 먼저 떠오르는 쪽 하나를 선택하면 됩니다.
+          </p>
+          <p class="text-gray-300">
+            T와 F는 감정이나 논리의 유무를 뜻하지 않습니다. 누구나 두 방식을 모두 사용하며 상황에 따라 먼저 살피는 기준이 달라질 수 있습니다.
+            이 퀴즈는 정답, 오답, 제한 시간이 없는 <strong class="text-arcade-pink">비공식 재미용 콘텐츠</strong>입니다.
+          </p>
+        </div>
+
+        <!-- Quiz Specs Badges -->
+        <div class="grid grid-cols-3 gap-3 my-8 py-4 px-3 bg-[#07070c] border border-gray-800 rounded-lg">
+          <div class="text-center">
+            <div class="font-pixel text-[10px] md:text-xs text-arcade-amber mb-1">QUESTIONS</div>
+            <div class="font-bold text-sm md:text-base text-white">8 문항</div>
+          </div>
+          <div class="text-center border-x border-gray-800">
+            <div class="font-pixel text-[10px] md:text-xs text-arcade-cyan mb-1">EST. TIME</div>
+            <div class="font-bold text-sm md:text-base text-white">약 2분</div>
+          </div>
+          <div class="text-center">
+            <div class="font-pixel text-[10px] md:text-xs text-arcade-green mb-1">RULES</div>
+            <div class="font-bold text-sm md:text-base text-white">제한시간 없음</div>
+          </div>
+        </div>
+
+        <!-- Start CTA Button -->
+        <div class="flex flex-col items-center gap-4">
+          <button onclick="startQuiz()" class="w-full py-4 px-8 arcade-btn font-pixel text-sm md:text-base text-arcade-green rounded flex items-center justify-center gap-3 group">
+            <span class="inline-block transition-transform group-hover:translate-x-1">▶</span>
+            <span>테스트 시작 (PRESS START)</span>
+          </button>
+
+          <!-- Disclaimer -->
+          <p class="text-[11px] md:text-xs text-arcade-dimText text-center font-sans">
+            * 가볍게 자신의 선택 방식을 돌아보는 콘텐츠이며 공식 MBTI 검사가 아닙니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- VIEW 2: QUESTION SCREEN (문제 화면) -->
+    <!-- ============================================== -->
+    <section id="view-question" class="w-full hidden flex flex-col items-center">
+      <!-- Progress Bar & Indicator -->
+      <div class="w-full max-w-2xl flex items-center justify-between mb-3 px-1">
+        <div class="flex items-center gap-2">
+          <span class="font-pixel text-xs text-arcade-cyan tracking-wide">STAGE</span>
+          <span id="question-index-badge" class="retro-badge bg-[#161626] text-arcade-green border border-arcade-green/50">1 / 8</span>
+        </div>
+        <div class="font-pixel text-[11px] text-arcade-dimText">SELECT A OR B</div>
+      </div>
+
+      <!-- Segmented Arcade Progress Bar -->
+      <div class="w-full max-w-2xl h-3.5 bg-[#090911] border-2 border-[#1e1e30] rounded-sm p-0.5 mb-6 shadow-inner">
+        <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-arcade-cyan to-arcade-green transition-all duration-300 shadow-[0_0_8px_#00ff66]" style="width: 12.5%;"></div>
+      </div>
+
+      <!-- Question Card Frame -->
+      <div class="w-full max-w-2xl bg-arcade-panel/95 pixel-border-cyan rounded-xl p-6 md:p-8 shadow-2xl relative">
+        <!-- Situation Tag -->
+        <div class="flex items-center justify-between mb-4">
+          <span id="question-tag" class="retro-badge bg-[#061c16] text-arcade-green border border-arcade-green/40">
+            SCENARIO #01
+          </span>
+          <span class="font-pixel text-[10px] text-gray-500">NO TIME LIMIT</span>
+        </div>
+
+        <!-- Situation Description (Prompt requested Korean verbatim example) -->
+        <h2 id="question-text" class="text-base sm:text-lg md:text-xl font-bold text-white leading-relaxed mb-6">
+          친구가 “나 요즘 너무 우울해서 식물 하나 샀어…”라고 말합니다. 이야기를 더 나눈다면 무엇을 먼저 살펴볼까요?
+        </h2>
+
+        <!-- Choice Options (A & B) -->
+        <div class="space-y-4 mb-8">
+          <!-- Choice A -->
+          <button type="button" id="card-choice-a" aria-pressed="false" onclick="selectChoice('A')" class="choice-card w-full p-4 md:p-5 rounded-lg border-2 border-[#202235] bg-[#0c0d16] hover:border-arcade-cyan/70 flex items-start gap-4 text-left font-sans">
+            <div id="badge-choice-a" class="w-8 h-8 shrink-0 rounded bg-[#161829] border border-gray-700 font-pixel text-xs md:text-sm text-gray-300 flex items-center justify-center font-bold">
+              A
+            </div>
+            <div class="flex-1">
+              <p id="text-choice-a" class="text-sm md:text-base text-gray-200 leading-relaxed font-normal">
+                식물을 돌보는 일이 부담이 되지는 않을지, 기분 전환에 도움이 될 방법이 무엇인지 생각한다.
+              </p>
+            </div>
+          </button>
+
+          <!-- Choice B -->
+          <button type="button" id="card-choice-b" aria-pressed="false" onclick="selectChoice('B')" class="choice-card w-full p-4 md:p-5 rounded-lg border-2 border-[#202235] bg-[#0c0d16] hover:border-arcade-cyan/70 flex items-start gap-4 text-left font-sans">
+            <div id="badge-choice-b" class="w-8 h-8 shrink-0 rounded bg-[#161829] border border-gray-700 font-pixel text-xs md:text-sm text-gray-300 flex items-center justify-center font-bold">
+              B
+            </div>
+            <div class="flex-1">
+              <p id="text-choice-b" class="text-sm md:text-base text-gray-200 leading-relaxed font-normal">
+                친구가 어떤 마음으로 식물을 샀는지, 지금 어떤 위로가 필요한지 먼저 듣는다.
+              </p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Next Question Action Button (Disabled until choice made) -->
+        <div class="flex flex-col items-center">
+          <button id="btn-next" onclick="submitChoice()" disabled class="w-full py-4 px-6 arcade-btn font-pixel text-xs md:text-sm text-arcade-green rounded flex items-center justify-center gap-2">
+            <span>선택 완료 후 다음으로</span>
+            <span>▶</span>
+          </button>
+          <span id="hint-select" class="text-xs text-arcade-dimText mt-2.5 font-sans">
+            * 답변(A 또는 B)을 선택하면 다음 문항으로 넘어갈 수 있습니다.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- VIEW 3: RESULT SCREEN (결과 화면) -->
+    <!-- ============================================== -->
+    <section id="view-result" class="w-full hidden flex flex-col items-center text-center">
+      <!-- Result Title Banner -->
+      <div class="mb-3 inline-flex items-center gap-2 px-4 py-1.5 rounded bg-[#151524] border border-arcade-amber/40 shadow-[0_0_12px_rgba(255,184,0,0.2)]">
+        <span class="font-pixel text-[11px] md:text-xs text-arcade-amber tracking-widest">★ QUIZ COMPLETED ★</span>
+      </div>
+
+      <h1 class="font-pixel text-xl sm:text-3xl md:text-4xl text-white mb-6 tracking-wide">
+        SELECTION ANALYSIS
+      </h1>
+
+      <!-- Result Card Frame -->
+      <div id="result-box" class="w-full max-w-2xl bg-arcade-panel/95 pixel-border-green rounded-xl p-6 md:p-10 shadow-2xl text-left relative overflow-hidden">
+
+        <!-- Score & Count Summary Badges -->
+        <div class="mb-6 p-4 rounded-lg bg-[#07070d] border border-gray-800 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="font-pixel text-xs text-arcade-dimText">COUNT SUMMARY:</span>
+            <div class="flex items-center gap-2">
+              <span class="retro-badge bg-cyan-950 text-arcade-cyan border border-arcade-cyan">A 선택: <span id="summary-count-a">0</span>회</span>
+              <span class="retro-badge bg-pink-950 text-arcade-pink border border-arcade-pink">B 선택: <span id="summary-count-b">0</span>회</span>
+            </div>
+          </div>
+          <div class="font-pixel text-[10px] text-arcade-amber">TOTAL: 8 / 8</div>
+        </div>
+        <p class="text-xs text-arcade-dimText mb-6">A는 논리·객관적 기준을, B는 사람·가치를 먼저 고려한 응답입니다. 어느 선택에도 정답이나 우열은 없습니다.</p>
+
+        <!-- Result Archetype Badge -->
+        <div class="flex items-center gap-2 mb-3">
+          <span id="result-badge-tier" class="retro-badge bg-green-950 text-arcade-green border border-arcade-green text-xs">
+            0~2점 상태
+          </span>
+          <span class="text-xs text-arcade-dimText">선택 스타일 리포트</span>
+        </div>
+
+        <!-- Result Headline -->
+        <h2 id="result-title" class="font-bold text-xl md:text-2xl text-white mb-4 leading-tight">
+          사람과 가치를 먼저 살핀 선택
+        </h2>
+
+        <!-- Result Description Paragraphs (Non-stereotyping, supportive tone) -->
+        <div id="result-description" class="space-y-3 text-sm md:text-base text-gray-300 leading-relaxed mb-8 bg-[#090912] p-5 rounded-lg border border-gray-800/80">
+          <!-- Populated by JS -->
+        </div>
+
+        <p class="text-xs text-arcade-dimText mb-6 border-t border-gray-800/80 pt-5">
+          이 결과는 재미로 보는 선택 경향입니다. 상황과 상대에 따라 답은 달라질 수 있으며, 공식 MBTI 유형 판정과는 관계가 없습니다.
+        </p>
+
+        <!-- Dual Action Buttons -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <button onclick="restartQuiz()" class="w-full py-4 px-6 arcade-btn font-pixel text-xs md:text-sm text-arcade-green rounded flex items-center justify-center gap-2">
+            <span>↺</span>
+            <span>퀴즈 다시 하기</span>
+          </button>
+          <button onclick="goToHome()" class="w-full py-4 px-6 rounded border-2 border-gray-700 bg-[#141520] hover:bg-[#1f2130] hover:border-white font-pixel text-xs md:text-sm text-gray-300 hover:text-white transition-all flex items-center justify-center gap-2">
+            <span>◀</span>
+            <span>게임 선택으로 돌아가기</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Arcade Footer -->
+  <footer class="w-full max-w-4xl mx-auto text-center py-4 text-xs text-gray-500 font-sans flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-gray-900 mt-8">
+    <div>
+      <span class="font-pixel text-[10px] text-arcade-green">MINI QUIZ HEAVEN</span>
+      <span class="mx-2 text-gray-700">|</span>
+      <span>T vs F 선택 스타일 퀴즈 (독립 반응형 웹페이지)</span>
+    </div>
+    <div class="text-[11px] text-gray-600">
+      8-bit Neon Arcade Theme • No Login Required
+    </div>
+  </footer>
+
+  <script src="./tf-quiz.js"></script>
+</body>
+</html>

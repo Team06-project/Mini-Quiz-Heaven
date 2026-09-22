@@ -1,0 +1,121 @@
+/* Retro Arcade Background Starfield / Dot Grid */
+body {
+  background-color: #060609;
+  background-image:
+    radial-gradient(rgba(0, 255, 102, 0.25) 1px, transparent 1px),
+    radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* CRT Scanline overlay effect */
+.crt-overlay::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 40;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* 8-bit Pixel Border Styles */
+.pixel-border-green {
+  border: 3px solid #00ff66;
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.4), inset 0 0 8px rgba(0, 255, 102, 0.2);
+}
+
+.pixel-border-cyan {
+  border: 3px solid #00f0ff;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4), inset 0 0 8px rgba(0, 240, 255, 0.2);
+}
+
+.pixel-border-pink {
+  border: 3px solid #ff007f;
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.4), inset 0 0 8px rgba(255, 0, 127, 0.2);
+}
+
+.pixel-border-amber {
+  border: 3px solid #ffb800;
+  box-shadow: 0 0 12px rgba(255, 184, 0, 0.4), inset 0 0 8px rgba(255, 184, 0, 0.2);
+}
+
+.pixel-border-muted {
+  border: 3px solid #232332;
+}
+
+/* Neon Flicker animation */
+@keyframes neon-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #00ff66);
+  }
+
+  50% {
+    opacity: 0.88;
+    filter: drop-shadow(0 0 3px #00ff66);
+  }
+}
+
+.neon-pulse-glow {
+  animation: neon-pulse 3s infinite ease-in-out;
+}
+
+/* Stepped Pixel Button */
+.arcade-btn {
+  position: relative;
+  border: 3px solid #00ff66;
+  background-color: #09120e;
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.4), 4px 4px 0 #003816;
+  transition: all 0.15s steps(4);
+}
+
+.arcade-btn:hover:not(:disabled) {
+  background-color: #00ff66;
+  color: #000000;
+  box-shadow: 0 0 18px #00ff66, 2px 2px 0 #000000;
+  transform: translate(2px, 2px);
+}
+
+.arcade-btn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 8px #00ff66, 0 0 0 #000000;
+}
+
+.arcade-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: #4a4a58;
+  box-shadow: none;
+}
+
+/* Selection Card Active states */
+.choice-card {
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+}
+
+.choice-card.selected {
+  border-color: #00ff66 !important;
+  background-color: rgba(0, 255, 102, 0.08) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.5), inset 0 0 12px rgba(0, 255, 102, 0.25) !important;
+  transform: translateY(-2px);
+}
+
+/* Pixel Badge */
+.retro-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
