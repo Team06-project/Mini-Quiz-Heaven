@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국 역사 퀴즈</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 메인 페이지 -->
+    <div id="mainPage" class="page">
+        <div class="container">
+            <h1 class="neon-title">🎮 한국 역사 퀴즈</h1>
+            <p class="subtitle">생활 속 역사를 맞혀보세요!</p>
+            
+            <div class="button-group">
+                <button class="start-btn" onclick="selectDifficulty('easy')">
+                    ⭐ EASY
+                </button>
+                <button class="start-btn" onclick="selectDifficulty('normal')">
+                    ⭐⭐ NORMAL
+                </button>
+                <button class="start-btn" onclick="selectDifficulty('hard')">
+                    ⭐⭐⭐ HARD
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 퀴즈 페이지 -->
+    <div id="quizPage" class="page hidden">
+        <div class="container">
+            <div class="quiz-header">
+                <span id="questionCount">Q1 / 12</span>
+                <span id="scoreDisplay">점수: 0</span>
+            </div>
+            
+            <div id="timerContainer" class="timer-container"></div>
+            
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <div id="quizImage" class="quiz-image hidden"></div>
+                <div id="questionText" class="question"></div>
+                <div id="optionsContainer" class="options-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 결과 페이지 -->
+    <div id="resultPage" class="page hidden">
+        <div class="container">
+            <div id="resultContent"></div>
+        </div>
+    </div>
+
+    <!-- 최종 결과 페이지 -->
+    <div id="finalPage" class="page hidden">
+        <div class="container">
+            <div id="finalContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
