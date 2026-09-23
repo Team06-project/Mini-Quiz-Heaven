@@ -619,6 +619,8 @@ function showFinalResult() {
     typeText = "역사 탐험을 시작한 사람";
   }
 
+
+
   const correctCount = userAnswers.filter((a) => a.isCorrect).length;
   const incorrectCount = userAnswers.filter((a) => !a.isCorrect).length;
 
@@ -653,11 +655,13 @@ function showFinalResult() {
           
           <div class="final-buttons">
               <button class="final-btn" onclick="shareResult()">🔗 결과 공유하기</button>
-              <button class="final-btn" onclick="restartGame()">🏠 홈으로 돌아가기</button>
+              <button class="final-btn" onclick="goToHome()">🏠 홈으로 돌아가기</button>
               <button class="final-btn" onclick="retryGame()">🔄 다시 도전</button>
           </div>
       </div>
   `;
+  saveQuizResult("history", userScore);
+
 
   document.getElementById("finalContent").innerHTML = html;
 }
@@ -682,6 +686,11 @@ function shareResult() {
 }
 
 // 홈으로
+
+function goToHome() {
+  window.location.href = '../../quiz-selection/index.html';
+}
+
 function restartGame() {
   clearInterval(timerInterval);
   document.getElementById("finalPage").classList.add("hidden");

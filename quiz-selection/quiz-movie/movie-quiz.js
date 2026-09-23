@@ -285,7 +285,7 @@ function endGame() {
     window.speechSynthesis.cancel();
   }
 
-  saveQuizResult("football", score);
+  saveQuizResult("movie", score);
   
   gameBox.classList.add("hidden");
 
